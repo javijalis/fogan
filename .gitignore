@@ -7,6 +7,11 @@ vendor/*
 */cache/*
 web/uploads/*
 web/bundles/*
+.DS_Store
+vendor/*
+app/cache/*
+app/logs/*
+*~
 
 # Configuration files
 app/config/parameters.ini
