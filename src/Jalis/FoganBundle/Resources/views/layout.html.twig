@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>{% block title %}Welcome!{% endblock %}</title>
+<link rel="stylesheet" href="/bundles/jalisbootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/bundles/jalisfogan/css/main.css" />{% block stylesheets %}{% endblock %}
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="./index.html" class="brand">Bootstrap</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./index.html">Home</a>
+              </li>
+                        </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<header id="overview" class="jumbotron subhead">
+  <div class="container">
+    <h1>Home</h1>
+    <p class="lead">Pagina de inicio</p>
+  </div>
+</header>
+
+<div class="container">
+<div class="row">
+<div class="span2">
+<!--Sidebar content-->
+</div>
+<div class="span10">
+<!--Body content-->
+{% block body %}{% endblock %}</div>
+</div>
+</div> 
+
+
+<script src="/bundles/jalisbootstrap/js/bootstrap.min.js"></script> 
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>
