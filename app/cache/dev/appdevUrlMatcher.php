@@ -25,13 +25,29 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         $allow = array();
         $pathinfo = rawurldecode($pathinfo);
 
-        // _welcome
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', '_welcome');
-            }
+        // _assetic_1762b00
+        if ($pathinfo === '/css/1762b00.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => '1762b00',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_1762b00',);
+        }
 
-            return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\WelcomeController::indexAction',  '_route' => '_welcome',);
+        // _assetic_1762b00_0
+        if ($pathinfo === '/css/1762b00_part_1_bootstrap-responsive_1.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => '1762b00',  'pos' => '0',  '_format' => 'css',  '_route' => '_assetic_1762b00_0',);
+        }
+
+        // _assetic_1762b00_1
+        if ($pathinfo === '/css/1762b00_part_1_bootstrap-responsive.min_2.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => '1762b00',  'pos' => '1',  '_format' => 'css',  '_route' => '_assetic_1762b00_1',);
+        }
+
+        // _assetic_1762b00_2
+        if ($pathinfo === '/css/1762b00_part_1_bootstrap_3.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => '1762b00',  'pos' => '2',  '_format' => 'css',  '_route' => '_assetic_1762b00_2',);
+        }
+
+        // _assetic_1762b00_3
+        if ($pathinfo === '/css/1762b00_part_1_bootstrap.min_4.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => '1762b00',  'pos' => '3',  '_format' => 'css',  '_route' => '_assetic_1762b00_3',);
         }
 
         // _demo_login
@@ -160,6 +176,20 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController::finalAction',  '_route' => '_configurator_final',);
             }
 
+        }
+
+        // jalis_bootstrap_default_index
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?<name>[^/]+)$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Jalis\\BootstrapBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'jalis_bootstrap_default_index'));
+        }
+
+        // jalis_fogan_default_index
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'jalis_fogan_default_index');
+            }
+
+            return array (  '_controller' => 'Jalis\\FoganBundle\\Controller\\DefaultController::indexAction',  '_route' => 'jalis_fogan_default_index',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
