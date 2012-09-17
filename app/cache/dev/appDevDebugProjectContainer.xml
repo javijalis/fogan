@@ -39,7 +39,7 @@
     <parameter key="mailer_host">localhost</parameter>
     <parameter key="mailer_user">null</parameter>
     <parameter key="mailer_password">null</parameter>
-    <parameter key="locale">en</parameter>
+    <parameter key="locale">es</parameter>
     <parameter key="secret">04aaf9b55796109edc1828df024537b559bf9ea4</parameter>
     <parameter key="database_path">null</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
@@ -85,7 +85,7 @@
     <parameter key="debug.controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\TraceableControllerResolver</parameter>
     <parameter key="kernel.secret">04aaf9b55796109edc1828df024537b559bf9ea4</parameter>
     <parameter key="kernel.trust_proxy_headers">false</parameter>
-    <parameter key="kernel.default_locale">en</parameter>
+    <parameter key="kernel.default_locale">es</parameter>
     <parameter key="session.class">Symfony\Component\HttpFoundation\Session\Session</parameter>
     <parameter key="session.flashbag.class">Symfony\Component\HttpFoundation\Session\Flash\FlashBag</parameter>
     <parameter key="session.attribute_bag.class">Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag</parameter>
@@ -357,7 +357,9 @@
     <parameter key="assetic.value_supplier.class">Symfony\Bundle\AsseticBundle\DefaultValueSupplier</parameter>
     <parameter key="assetic.node.paths" type="collection"/>
     <parameter key="assetic.cache_dir">/var/www/fogan/app/cache/dev/assetic</parameter>
-    <parameter key="assetic.bundles" type="collection"/>
+    <parameter key="assetic.bundles" type="collection">
+      <parameter>FOSUserBundle</parameter>
+    </parameter>
     <parameter key="assetic.twig_extension.class">Symfony\Bundle\AsseticBundle\Twig\AsseticExtension</parameter>
     <parameter key="assetic.twig_formula_loader.class">Assetic\Extension\Twig\TwigFormulaLoader</parameter>
     <parameter key="assetic.helper.dynamic.class">Symfony\Bundle\AsseticBundle\Templating\DynamicAsseticHelper</parameter>
@@ -462,7 +464,7 @@
     <parameter key="jms_di_extra.cache_dir">/var/www/fogan/app/cache/dev/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
     <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/var/www/fogan/app/cache/dev/jms_diextra/doctrine/EntityManager.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EM505317ef29450_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EM5056dd60a4e1b_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -602,7 +604,7 @@
     </service>
     <service id="locale_listener" class="Symfony\Component\HttpKernel\EventListener\LocaleListener">
       <tag name="kernel.event_subscriber"/>
-      <argument>en</argument>
+      <argument>es</argument>
       <argument type="service" id="router"/>
     </service>
     <service id="event_dispatcher" class="Symfony\Component\HttpKernel\Debug\ContainerAwareTraceableEventDispatcher">
@@ -820,7 +822,9 @@
     </service>
     <service id="translator.default" class="Symfony\Bundle\FrameworkBundle\Translation\Translator">
       <argument type="service" id="service_container"/>
-      <argument type="service" id="translator.selector"/>
+      <argument type="service">
+        <service class="Symfony\Component\Translation\MessageSelector" public="false"/>
+      </argument>
       <argument type="collection">
         <argument key="translation.loader.php" type="collection">
           <argument>php</argument>
@@ -858,11 +862,754 @@
         <argument key="cache_dir">/var/www/fogan/app/cache/dev/translations</argument>
         <argument key="debug">true</argument>
       </argument>
+      <call method="setFallbackLocale">
+        <argument>es</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ro.xlf</argument>
+        <argument>ro</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hr.xlf</argument>
+        <argument>hr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt.xlf</argument>
+        <argument>pt</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.da.xlf</argument>
+        <argument>da</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Cyrl.xlf</argument>
+        <argument>sr_Cyrl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.it.xlf</argument>
+        <argument>it</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fi.xlf</argument>
+        <argument>fi</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.en.xlf</argument>
+        <argument>en</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pl.xlf</argument>
+        <argument>pl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.cs.xlf</argument>
+        <argument>cs</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lb.xlf</argument>
+        <argument>lb</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ja.xlf</argument>
+        <argument>ja</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt_BR.xlf</argument>
+        <argument>pt_BR</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ru.xlf</argument>
+        <argument>ru</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sk.xlf</argument>
+        <argument>sk</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.et.xlf</argument>
+        <argument>et</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ua.xlf</argument>
+        <argument>ua</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Latn.xlf</argument>
+        <argument>sr_Latn</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sl.xlf</argument>
+        <argument>sl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lt.xlf</argument>
+        <argument>lt</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hy.xlf</argument>
+        <argument>hy</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ca.xlf</argument>
+        <argument>ca</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sv.xlf</argument>
+        <argument>sv</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.de.xlf</argument>
+        <argument>de</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.mn.xlf</argument>
+        <argument>mn</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.he.xlf</argument>
+        <argument>he</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fa.xlf</argument>
+        <argument>fa</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_CN.xlf</argument>
+        <argument>zh_CN</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.eu.xlf</argument>
+        <argument>eu</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.es.xlf</argument>
+        <argument>es</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nb.xlf</argument>
+        <argument>nb</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nl.xlf</argument>
+        <argument>nl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hu.xlf</argument>
+        <argument>hu</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.id.xlf</argument>
+        <argument>id</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ro.xlf</argument>
+        <argument>ro</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hr.xlf</argument>
+        <argument>hr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt.xlf</argument>
+        <argument>pt</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.da.xlf</argument>
+        <argument>da</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Cyrl.xlf</argument>
+        <argument>sr_Cyrl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.it.xlf</argument>
+        <argument>it</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fi.xlf</argument>
+        <argument>fi</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.en.xlf</argument>
+        <argument>en</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pl.xlf</argument>
+        <argument>pl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.cs.xlf</argument>
+        <argument>cs</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lb.xlf</argument>
+        <argument>lb</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ja.xlf</argument>
+        <argument>ja</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt_BR.xlf</argument>
+        <argument>pt_BR</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ru.xlf</argument>
+        <argument>ru</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sk.xlf</argument>
+        <argument>sk</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.et.xlf</argument>
+        <argument>et</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ua.xlf</argument>
+        <argument>ua</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Latn.xlf</argument>
+        <argument>sr_Latn</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sl.xlf</argument>
+        <argument>sl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lt.xlf</argument>
+        <argument>lt</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hy.xlf</argument>
+        <argument>hy</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ca.xlf</argument>
+        <argument>ca</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sv.xlf</argument>
+        <argument>sv</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.de.xlf</argument>
+        <argument>de</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.mn.xlf</argument>
+        <argument>mn</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.he.xlf</argument>
+        <argument>he</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fa.xlf</argument>
+        <argument>fa</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.zh_CN.xlf</argument>
+        <argument>zh_CN</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.eu.xlf</argument>
+        <argument>eu</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.es.xlf</argument>
+        <argument>es</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nb.xlf</argument>
+        <argument>nb</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nl.xlf</argument>
+        <argument>nl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hu.xlf</argument>
+        <argument>hu</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.id.xlf</argument>
+        <argument>id</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/src/Jalis/FoganBundle/Resources/translations/messages.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>messages</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.uk.yml</argument>
+        <argument>uk</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.es.yml</argument>
+        <argument>es</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.de.yml</argument>
+        <argument>de</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sv.yml</argument>
+        <argument>sv</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.fa_IR.yml</argument>
+        <argument>fa_IR</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.cs.yml</argument>
+        <argument>cs</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.cs.yml</argument>
+        <argument>cs</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.es.yml</argument>
+        <argument>es</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sl.yml</argument>
+        <argument>sl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.zh_CN.yml</argument>
+        <argument>zh_CN</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.lv.yml</argument>
+        <argument>lv</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.zh_CN.yml</argument>
+        <argument>zh_CN</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.pt_BR.yml</argument>
+        <argument>pt_BR</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ja.yml</argument>
+        <argument>ja</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.pl.yml</argument>
+        <argument>pl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.it.yml</argument>
+        <argument>it</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.hr.yml</argument>
+        <argument>hr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.fr.yml</argument>
+        <argument>fr</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.fr.yml</argument>
+        <argument>fr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.uk.yml</argument>
+        <argument>uk</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.da.yml</argument>
+        <argument>da</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.nl.yml</argument>
+        <argument>nl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pt_BR.yml</argument>
+        <argument>pt_BR</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ja.yml</argument>
+        <argument>ja</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.it.yml</argument>
+        <argument>it</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sk.yml</argument>
+        <argument>sk</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.et.yml</argument>
+        <argument>et</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.de.yml</argument>
+        <argument>de</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ru.yml</argument>
+        <argument>ru</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sr_Latn.yml</argument>
+        <argument>sr_Latn</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.en.yml</argument>
+        <argument>en</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.bg.yml</argument>
+        <argument>bg</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.hr.yml</argument>
+        <argument>hr</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ru.yml</argument>
+        <argument>ru</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.fi.yml</argument>
+        <argument>fi</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.en.yml</argument>
+        <argument>en</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.lv.yml</argument>
+        <argument>lv</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pt_PT.yml</argument>
+        <argument>pt_PT</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ro.yml</argument>
+        <argument>ro</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pl.yml</argument>
+        <argument>pl</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ca.yml</argument>
+        <argument>ca</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.tr.yml</argument>
+        <argument>tr</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.nl.yml</argument>
+        <argument>nl</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.lb.yml</argument>
+        <argument>lb</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.da.yml</argument>
+        <argument>da</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.bg.yml</argument>
+        <argument>bg</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.tr.yml</argument>
+        <argument>tr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sr_Latn.yml</argument>
+        <argument>sr_Latn</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sk.yml</argument>
+        <argument>sk</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.fa_IR.yml</argument>
+        <argument>fa_IR</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sl.yml</argument>
+        <argument>sl</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.fi.yml</argument>
+        <argument>fi</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.hu.yml</argument>
+        <argument>hu</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
     </service>
-    <service id="translator" class="Symfony\Component\Translation\IdentityTranslator">
-      <argument type="service" id="translator.selector"/>
-    </service>
-    <service id="translator.selector" class="Symfony\Component\Translation\MessageSelector" public="false"/>
     <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
       <tag name="translation.loader" alias="php"/>
     </service>
@@ -1510,7 +2257,7 @@
     </service>
     <service id="templating.helper.translator" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\TranslatorHelper">
       <tag name="templating.helper" alias="translator"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="templating.helper.form" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\FormHelper">
       <tag name="templating.helper" alias="form"/>
@@ -1575,7 +2322,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>505317ef029e2</argument>
+            <argument>5056dd607f062</argument>
           </service>
         </argument>
       </argument>
@@ -1850,7 +2597,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>505317ef029e2</argument>
+            <argument>5056dd607f062</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -1972,7 +2719,7 @@
         <argument type="service">
           <service class="Symfony\Bridge\Twig\Extension\TranslationExtension" public="false">
             <tag name="twig.extension"/>
-            <argument type="service" id="translator"/>
+            <argument type="service" id="translator.default"/>
           </service>
         </argument>
       </call>
@@ -2050,7 +2797,9 @@
             <argument type="service" id="templating.name_parser"/>
             <argument>true</argument>
             <argument type="collection"/>
-            <argument type="collection"/>
+            <argument type="collection">
+              <argument>FOSUserBundle</argument>
+            </argument>
             <argument type="service" id="assetic.value_supplier.default"/>
           </service>
         </argument>
@@ -2130,6 +2879,33 @@
           </service>
         </argument>
       </argument>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.twig"/>
+            <tag name="assetic.formula_resource" loader="twig"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>FOSUserBundle</argument>
+                  <argument>/var/www/fogan/app/Resources/FOSUserBundle/views</argument>
+                  <argument>/\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>FOSUserBundle</argument>
+                  <argument>/var/www/fogan/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/views</argument>
+                  <argument>/\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>twig</argument>
+      </call>
       <call method="addResource">
         <argument type="service">
           <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource" public="false">
@@ -2271,7 +3047,7 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EM505317ef29450_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+    <service id="doctrine.orm.default_entity_manager" class="EM5056dd60a4e1b_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
       <file>/var/www/fogan/app/cache/dev/jms_diextra/doctrine/EntityManager.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
@@ -2904,6 +3680,7 @@
     </service>
     <service id="debug.event_dispatcher" alias="event_dispatcher"/>
     <service id="session.storage" alias="session.storage.native"/>
+    <service id="translator" alias="translator.default"/>
     <service id="debug.templating.engine.twig" alias="templating"/>
     <service id="database_connection" alias="doctrine.dbal.default_connection"/>
     <service id="doctrine.orm.entity_manager" alias="doctrine.orm.default_entity_manager"/>
