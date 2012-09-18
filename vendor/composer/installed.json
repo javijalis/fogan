@@ -17,7 +17,7 @@
         "require": {
             "php": ">=5.2.4"
         },
-        "time": "2012-08-25 03:36:54",
+        "time": "2012-08-25 01:36:54",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -49,7 +49,7 @@
         "require": {
             "php": ">=5.3.2"
         },
-        "time": "2012-08-01 04:51:16",
+        "time": "2012-08-01 02:51:16",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -82,7 +82,7 @@
             "php": ">=5.3.2",
             "doctrine/common": "2.3.*"
         },
-        "time": "2012-08-14 07:45:09",
+        "time": "2012-08-14 05:45:09",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -126,7 +126,7 @@
         "suggest": {
             "doctrine/orm": "The Doctrine ORM integration is optional in the bundle."
         },
-        "time": "2012-08-09 07:59:23",
+        "time": "2012-08-09 05:59:23",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -158,7 +158,7 @@
         "require": {
             "twig/twig": "1.*"
         },
-        "time": "2012-05-20 21:28:19",
+        "time": "2012-05-20 19:28:19",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -198,7 +198,7 @@
             "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
             "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris"
         },
-        "time": "2012-08-26 04:53:16",
+        "time": "2012-08-26 02:53:16",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -245,7 +245,7 @@
         "suggest": {
             "symfony/twig-bundle": "2.1.*"
         },
-        "time": "2012-08-08 20:16:26",
+        "time": "2012-08-08 18:16:26",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -277,7 +277,7 @@
         "require": {
             "php": ">=5.2.4"
         },
-        "time": "2012-08-21 20:21:50",
+        "time": "2012-08-21 18:21:50",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -317,7 +317,7 @@
             "symfony/http-kernel": "2.1.*",
             "symfony/config": "2.1.*"
         },
-        "time": "2012-07-18 17:55:12",
+        "time": "2012-07-18 15:55:12",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -357,7 +357,7 @@
             "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
             "ext-mongo": "Allow sending log messages to a MongoDB server"
         },
-        "time": "2012-08-18 03:27:13",
+        "time": "2012-08-18 01:27:13",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -384,7 +384,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2012-01-02 13:40:52",
+        "time": "2012-01-02 12:40:52",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -413,7 +413,7 @@
             "symfony/framework-bundle": "2.*",
             "jms/cg": "1.0.0"
         },
-        "time": "2012-01-02 13:50:26",
+        "time": "2012-01-02 12:50:26",
         "type": "symfony-bundle",
         "installation-source": "dist",
         "autoload": {
@@ -440,7 +440,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2012-01-02 14:32:49",
+        "time": "2012-01-02 13:32:49",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -470,7 +470,7 @@
             "symfony/framework-bundle": "2.1.*",
             "jms/aop-bundle": "1.0.*"
         },
-        "time": "2012-08-16 04:01:42",
+        "time": "2012-08-16 02:01:42",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -521,7 +521,7 @@
             "symfony/form": "*",
             "symfony/validator": "*"
         },
-        "time": "2012-08-24 06:31:15",
+        "time": "2012-08-24 04:31:15",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -559,7 +559,7 @@
         "suggest": {
             "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
         },
-        "time": "2012-08-14 06:51:23",
+        "time": "2012-08-14 04:51:23",
         "bin": [
             "bin/doctrine",
             "bin/doctrine.php"
@@ -604,7 +604,7 @@
             "symfony/yaml": "2.1.*",
             "symfony/config": "2.1.*"
         },
-        "time": "2012-08-21 00:05:54",
+        "time": "2012-08-20 22:05:54",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -637,7 +637,7 @@
         "require": {
             "symfony/framework-bundle": "2.1.*"
         },
-        "time": "2012-08-25 22:01:45",
+        "time": "2012-08-25 20:01:45",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -671,7 +671,7 @@
             "doctrine/common": ">=2.1,<2.4-dev",
             "symfony/framework-bundle": "2.1.*"
         },
-        "time": "2012-08-03 19:26:14",
+        "time": "2012-08-03 17:26:14",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -712,7 +712,7 @@
         "suggest": {
             "doctrine/doctrine-bundle": "to generate entities and their crud controller"
         },
-        "time": "2012-08-27 17:16:11",
+        "time": "2012-08-27 15:16:11",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -790,7 +790,7 @@
         "suggest": {
             "doctrine/data-fixtures": "1.0.*"
         },
-        "time": "2012-08-27 22:00:18",
+        "time": "2012-08-27 20:00:18",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -817,8 +817,8 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://github.com/FriendsOfSymfony/FOSUserBundle/zipball/83536190cbd4a8b86846c3e8432f6ea907477b90",
-            "reference": "83536190cbd4a8b86846c3e8432f6ea907477b90",
+            "url": "https://github.com/FriendsOfSymfony/FOSUserBundle/zipball/34f1919ceab96339a8dc6ad7c2b00274a6f499f1",
+            "reference": "34f1919ceab96339a8dc6ad7c2b00274a6f499f1",
             "shasum": ""
         },
         "require": {
