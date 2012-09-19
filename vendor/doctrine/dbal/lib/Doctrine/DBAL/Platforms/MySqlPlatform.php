@@ -380,7 +380,7 @@ class MySqlPlatform extends AbstractPlatform
         }
 
         if ( ! isset($options['collate'])) {
-            $options['collate'] = 'utf8_general_ci';
+            $options['collate'] = 'utf8_unicode_ci';
         }
 
         $query .= 'DEFAULT CHARACTER SET ' . $options['charset'];
@@ -673,6 +673,7 @@ class MySqlPlatform extends AbstractPlatform
             'tinyblob'      => 'blob',
             'binary'        => 'blob',
             'varbinary'     => 'blob',
+            'set'           => 'simple_array',
         );
     }
 

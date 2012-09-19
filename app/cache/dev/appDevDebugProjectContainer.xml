@@ -248,7 +248,7 @@
     <parameter key="security.rememberme.token.provider.in_memory.class">Symfony\Component\Security\Core\Authentication\RememberMe\InMemoryTokenProvider</parameter>
     <parameter key="security.authentication.rememberme.services.persistent.class">Symfony\Component\Security\Http\RememberMe\PersistentTokenBasedRememberMeServices</parameter>
     <parameter key="security.authentication.rememberme.services.simplehash.class">Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices</parameter>
-    <parameter key="security.rememberme.response_listener.class">Symfony\Bundle\SecurityBundle\EventListener\ResponseListener</parameter>
+    <parameter key="security.rememberme.response_listener.class">Symfony\Component\Security\Http\RememberMe\ResponseListener</parameter>
     <parameter key="templating.helper.logout_url.class">Symfony\Bundle\SecurityBundle\Templating\Helper\LogoutUrlHelper</parameter>
     <parameter key="templating.helper.security.class">Symfony\Bundle\SecurityBundle\Templating\Helper\SecurityHelper</parameter>
     <parameter key="twig.extension.logout_url.class">Symfony\Bundle\SecurityBundle\Twig\Extension\LogoutUrlExtension</parameter>
@@ -343,6 +343,7 @@
     <parameter key="swiftmailer.spool.enabled">true</parameter>
     <parameter key="swiftmailer.sender_address">null</parameter>
     <parameter key="swiftmailer.single_address">null</parameter>
+    <parameter key="swiftmailer.delivery_whitelist" type="collection"/>
     <parameter key="assetic.asset_factory.class">Symfony\Bundle\AsseticBundle\Factory\AssetFactory</parameter>
     <parameter key="assetic.asset_manager.class">Assetic\Factory\LazyAssetManager</parameter>
     <parameter key="assetic.asset_manager_cache_warmer.class">Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer</parameter>
@@ -463,8 +464,8 @@
     <parameter key="jms_di_extra.directories" type="collection"/>
     <parameter key="jms_di_extra.cache_dir">/var/www/fogan/app/cache/dev/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/var/www/fogan/app/cache/dev/jms_diextra/doctrine/EntityManager.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EM50582dcc43fae_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/var/www/fogan/app/cache/dev/jms_diextra/doctrine/EntityManager_505840a039c7b.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager505840a039c7b_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -1007,6 +1008,12 @@
         <argument>xlf</argument>
         <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sv.xlf</argument>
         <argument>sv</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>/var/www/fogan/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.bg.xlf</argument>
+        <argument>bg</argument>
         <argument>validators</argument>
       </call>
       <call method="addResource">
@@ -2322,7 +2329,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>50582dcc1eb0a</argument>
+            <argument>505840a01462a</argument>
           </service>
         </argument>
       </argument>
@@ -2406,7 +2413,7 @@
       <argument type="service" id="security.context"/>
       <argument type="service" id="security.encoder_factory"/>
     </service>
-    <service id="security.rememberme.response_listener" class="Symfony\Bundle\SecurityBundle\EventListener\ResponseListener">
+    <service id="security.rememberme.response_listener" class="Symfony\Component\Security\Http\RememberMe\ResponseListener">
       <tag name="kernel.event_listener" event="kernel.response" method="onKernelResponse"/>
     </service>
     <service id="templating.helper.logout_url" class="Symfony\Bundle\SecurityBundle\Templating\Helper\LogoutUrlHelper">
@@ -2597,7 +2604,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>50582dcc1eb0a</argument>
+            <argument>505840a01462a</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2980,6 +2987,7 @@
         <argument key="port">null</argument>
         <argument key="user">root</argument>
         <argument key="password">developer</argument>
+        <argument key="charset">UTF8</argument>
         <argument key="driver">pdo_mysql</argument>
         <argument key="driverOptions" type="collection"/>
       </argument>
@@ -3008,14 +3016,6 @@
       <argument type="service">
         <service class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
           <argument type="service" id="service_container"/>
-          <call method="addEventSubscriber">
-            <argument type="service">
-              <service class="Doctrine\DBAL\Event\Listeners\MysqlSessionInit" public="false">
-                <tag name="doctrine.event_subscriber" connection="default"/>
-                <argument>UTF8</argument>
-              </service>
-            </argument>
-          </call>
           <call method="addEventSubscriber">
             <argument type="service">
               <service class="FOS\UserBundle\Entity\UserListener" public="false">
@@ -3047,8 +3047,8 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EM50582dcc43fae_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/var/www/fogan/app/cache/dev/jms_diextra/doctrine/EntityManager.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager505840a039c7b_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/var/www/fogan/app/cache/dev/jms_diextra/doctrine/EntityManager_505840a039c7b.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>

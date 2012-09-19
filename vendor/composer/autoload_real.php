@@ -24,6 +24,7 @@ class ComposerAutoloaderInit
 
         $loader->register();
 
+        require $vendorDir . '/kriswallsmith/assetic/src/functions.php';
         require $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php';
 
         return $loader;

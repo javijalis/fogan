@@ -32,7 +32,7 @@ class UglifyJsFilter implements FilterInterface
 
     /**
      * @param string $uglifyJsPath Absolute path to the uglifyjs executable
-     * @param string $nodeJsPath Absolute path to the folder containg node.js executable
+     * @param string $nodeJsPath   Absolute path to the folder containg node.js executable
      */
     public function __construct($uglifyJsPath, $nodeJsPath = null)
     {
@@ -124,7 +124,9 @@ class UglifyJsFilter implements FilterInterface
             }
 
             throw FilterException::fromProcess($proc)->setInput($asset->getContent());
-        } elseif (!file_exists($output)) {
+        }
+
+        if (!file_exists($output)) {
             throw new \RuntimeException('Error creating output file.');
         }
 

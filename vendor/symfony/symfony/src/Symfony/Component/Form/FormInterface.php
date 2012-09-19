@@ -21,7 +21,7 @@ interface FormInterface extends \ArrayAccess, \Traversable, \Countable
     /**
      * Sets the parent form.
      *
-     * @param  FormInterface $parent The parent form
+     * @param  FormInterface|null $parent The parent form or null if it's the root.
      *
      * @return FormInterface The form instance
      *
@@ -34,16 +34,9 @@ interface FormInterface extends \ArrayAccess, \Traversable, \Countable
     /**
      * Returns the parent form.
      *
-     * @return FormInterface The parent form
+     * @return FormInterface|null The parent form or null if there is none.
      */
     public function getParent();
-
-    /**
-     * Returns whether the form has a parent.
-     *
-     * @return Boolean
-     */
-    public function hasParent();
 
     /**
      * Adds a child to the form.
@@ -64,7 +57,7 @@ interface FormInterface extends \ArrayAccess, \Traversable, \Countable
      *
      * @return FormInterface The child form
      *
-     * @throws \InvalidArgumentException If the named child does not exist.
+     * @throws \OutOfBoundsException If the named child does not exist.
      */
     public function get($name);
 
@@ -184,7 +177,7 @@ interface FormInterface extends \ArrayAccess, \Traversable, \Countable
     public function addError(FormError $error);
 
     /**
-     * Returns whether the form is valid.
+     * Returns whether the form and all children are valid.
      *
      * @return Boolean
      */

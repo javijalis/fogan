@@ -13,7 +13,6 @@ namespace Symfony\Component\Form;
 
 use Symfony\Component\Form\Exception\FormException;
 use Symfony\Component\Form\Exception\AlreadyBoundException;
-use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 use Symfony\Component\Form\Util\FormUtil;
 use Symfony\Component\Form\Util\PropertyPath;
@@ -194,7 +193,7 @@ class Form implements \IteratorAggregate, FormInterface
             return null;
         }
 
-        if ($this->hasParent() && null === $this->getParent()->getConfig()->getDataClass()) {
+        if ($this->parent && null === $this->parent->getConfig()->getDataClass()) {
             return new PropertyPath('[' . $this->getName() . ']');
         }
 
@@ -253,7 +252,7 @@ class Form implements \IteratorAggregate, FormInterface
             throw new AlreadyBoundException('You cannot set the parent of a bound form');
         }
 
-        if ('' === $this->config->getName()) {
+        if (null !== $parent && '' === $this->config->getName()) {
             throw new FormException('A form with an empty name cannot have a parent form.');
         }
 
@@ -271,7 +270,12 @@ class Form implements \IteratorAggregate, FormInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Returns whether the form has a parent.
+     *
+     * @return Boolean
+     *
+     * @deprecated Deprecated since version 2.1, to be removed in 2.3. Use
+     *             {@link getParent()} or inverse {@link isRoot()} instead.
      */
     public function hasParent()
     {
@@ -291,7 +295,7 @@ class Form implements \IteratorAggregate, FormInterface
      */
     public function isRoot()
     {
-        return !$this->hasParent();
+        return null === $this->parent;
     }
 
     /**
@@ -402,7 +406,6 @@ class Form implements \IteratorAggregate, FormInterface
         $this->modelData = $modelData;
         $this->normData = $normData;
         $this->viewData = $viewData;
-        $this->synchronized = true;
         $this->initialized = true;
         $this->lockSetData = false;
 
@@ -512,10 +515,6 @@ class Form implements \IteratorAggregate, FormInterface
         // errors added during listeners
         $this->errors = array();
 
-        $modelData = null;
-        $normData = null;
-        $extraData = array();
-        $synchronized = false;
         $dispatcher = $this->config->getEventDispatcher();
 
         // Hook to change content of the data bound by the browser
@@ -527,40 +526,29 @@ class Form implements \IteratorAggregate, FormInterface
             $submittedData = $event->getData();
         }
 
-        // By default, the submitted data is also the data in view format
-        $viewData = $submittedData;
-
         // Check whether the form is compound.
         // This check is preferrable over checking the number of children,
         // since forms without children may also be compound.
         // (think of empty collection forms)
         if ($this->config->getCompound()) {
             if (!is_array($submittedData)) {
-                if (!FormUtil::isEmpty($submittedData)) {
-                    throw new UnexpectedTypeException($submittedData, 'array');
-                }
-
                 $submittedData = array();
             }
 
             foreach ($this->children as $name => $child) {
-                if (!isset($submittedData[$name])) {
-                    $submittedData[$name] = null;
-                }
+                $child->bind(isset($submittedData[$name]) ? $submittedData[$name] : null);
+                unset($submittedData[$name]);
             }
 
-            foreach ($submittedData as $name => $value) {
-                if ($this->has($name)) {
-                    $this->children[$name]->bind($value);
-                } else {
-                    $extraData[$name] = $value;
-                }
-            }
+            $this->extraData = $submittedData;
 
             // If the form is compound, the default data in view format
             // is reused. The data of the children is merged into this
             // default data using the data mapper.
-            $viewData = $this->getViewData();
+            $viewData = $this->viewData;
+        } else {
+            // If the form is not compound, the submitted data is also the data in view format.
+            $viewData = $submittedData;
         }
 
         if (FormUtil::isEmpty($viewData)) {
@@ -581,6 +569,9 @@ class Form implements \IteratorAggregate, FormInterface
             $this->config->getDataMapper()->mapFormsToData($this->children, $viewData);
         }
 
+        $modelData = null;
+        $normData = null;
+
         try {
             // Normalize data to unified representation
             $normData = $this->viewToNorm($viewData);
@@ -598,17 +589,14 @@ class Form implements \IteratorAggregate, FormInterface
             // Synchronize representations - must not change the content!
             $modelData = $this->normToModel($normData);
             $viewData = $this->normToView($normData);
-
-            $synchronized = true;
         } catch (TransformationFailedException $e) {
+            $this->synchronized = false;
         }
 
         $this->bound = true;
         $this->modelData = $modelData;
         $this->normData = $normData;
         $this->viewData = $viewData;
-        $this->extraData = $extraData;
-        $this->synchronized = $synchronized;
 
         if ($dispatcher->hasListeners(FormEvents::POST_BIND)) {
             $event = new FormEvent($this, $viewData);
@@ -708,7 +696,7 @@ class Form implements \IteratorAggregate, FormInterface
             throw new \LogicException('You cannot call isValid() on a form that is not bound.');
         }
 
-        if ($this->hasErrors()) {
+        if (count($this->errors) > 0) {
             return false;
         }
 
@@ -724,15 +712,15 @@ class Form implements \IteratorAggregate, FormInterface
     }
 
     /**
-     * Returns whether or not there are errors.
+     * Returns whether there are errors associated with this form.
      *
-     * @return Boolean true if form is bound and not valid
+     * @return Boolean
+     *
+     * @deprecated Deprecated since version 2.1, to be removed in 2.3. Count
+     *             {@link getErrors()} instead.
      */
     public function hasErrors()
     {
-        // Don't call isValid() here, as its semantics are slightly different
-        // Forms are not valid if their children are invalid, but
-        // hasErrors() returns only true if a form itself has errors
         return count($this->errors) > 0;
     }
 
@@ -910,7 +898,7 @@ class Form implements \IteratorAggregate, FormInterface
             return $this->children[$name];
         }
 
-        throw new \InvalidArgumentException(sprintf('Child "%s" does not exist.', $name));
+        throw new \OutOfBoundsException(sprintf('Child "%s" does not exist.', $name));
     }
 
     /**
@@ -932,7 +920,7 @@ class Form implements \IteratorAggregate, FormInterface
      *
      * @return FormInterface The child form
      *
-     * @throws \InvalidArgumentException If the named child does not exist.
+     * @throws \OutOfBoundsException If the named child does not exist.
      */
     public function offsetGet($name)
     {
