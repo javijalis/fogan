@@ -310,6 +310,7 @@
     <parameter key="monolog.handler.debug.class">Symfony\Bridge\Monolog\Handler\DebugHandler</parameter>
     <parameter key="monolog.handler.swift_mailer.class">Monolog\Handler\SwiftMailerHandler</parameter>
     <parameter key="monolog.handler.native_mailer.class">Monolog\Handler\NativeMailerHandler</parameter>
+    <parameter key="monolog.handler.socket.class">Monolog\Handler\SocketHandler</parameter>
     <parameter key="monolog.handler.fingers_crossed.class">Monolog\Handler\FingersCrossedHandler</parameter>
     <parameter key="monolog.handler.fingers_crossed.error_level_activation_strategy.class">Monolog\Handler\FingersCrossed\ErrorLevelActivationStrategy</parameter>
     <parameter key="monolog.handlers_to_channels" type="collection">
@@ -464,8 +465,8 @@
     <parameter key="jms_di_extra.directories" type="collection"/>
     <parameter key="jms_di_extra.cache_dir">/var/www/fogan/app/cache/dev/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/var/www/fogan/app/cache/dev/jms_diextra/doctrine/EntityManager_505840a039c7b.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager505840a039c7b_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/var/www/fogan/app/cache/dev/jms_diextra/doctrine/EntityManager_505c14fc7d11c.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager505c14fc7d11c_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -2329,7 +2330,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>505840a01462a</argument>
+            <argument>505c14fc3186e</argument>
           </service>
         </argument>
       </argument>
@@ -2604,7 +2605,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>505840a01462a</argument>
+            <argument>505c14fc3186e</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -3047,8 +3048,8 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager505840a039c7b_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/var/www/fogan/app/cache/dev/jms_diextra/doctrine/EntityManager_505840a039c7b.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager505c14fc7d11c_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/var/www/fogan/app/cache/dev/jms_diextra/doctrine/EntityManager_505c14fc7d11c.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>

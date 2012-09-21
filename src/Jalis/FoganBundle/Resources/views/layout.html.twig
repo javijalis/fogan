@@ -5,6 +5,7 @@
 <title>{% block title %}Welcome!{% endblock %}</title>
 <link rel="stylesheet" href="/bundles/jalisbootstrap/css/bootstrap.css" />
 <link rel="stylesheet" href="/bundles/jalisfogan/css/main.css" />
+<link rel="stylesheet" href="/awesome/css/font-awesome.css" />
 {% block stylesheets %}{% endblock %}
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -81,7 +82,65 @@
 {% endblock %}</div>
 </div>
 </div> 
+<footer class="row">
+        <div class="container">
+            <div class="row">
+                <div class="span2">
+                    <h3>Quick links</h3>
+                    <ul>
+                        <li><a title="" href="#">Home</a></li>
+                        <li><a title="" href="#">Our work</a></li>
+                        <li><a title="" href="#">About us</a></li>
+                    </ul>
+                </div>
+                <div class="span2">
+                    <br><br>
+                    <ul>
+                        <li><a title="" href="#">Pricing</a></li>
+                        <li><a title="" href="#">Explore</a></li>
+                        <li><a title="" href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="span4 social-networks">
+                    <h3>Stay in touch</h3>
+                    <p>Stay in touch on social networks</p>
+                    <a class="icon-facebook" title="Follow us on Facebook" href="#"></a>
+                    <a class="icon-twitter" title="Follow us on Twitter" href="#"></a>
+                    <a class="icon-google-plus" title="Follow us on Google Plus" href="#"></a>
+                    <a class="icon-github" title="Follow us on Google Plus" href="#"></a>
+                    <a class="icon-pinterest" title="Follow us on Google Plus" href="#"></a>
+                </div>
+                <div class="span4">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our monthly newsletter and be the first to know about our news and special deals!</p>
+                    <form>
+                        <input type="text" placeholder="Enter your E-mail">
+                        <input type="submit" value="Ok" class="btn">
+                    </form>
+                </div>
+            </div> <!-- /row -->        
+        </div> <!-- /container -->
 
+    <div id="footer-extra">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    &copy; 2010&mdash;2012 Your company
+                </div>
+                <div class="span4">
+                    <i class="icon-phone"></i> &nbsp; 
+                    00123 320 000 123 456
+                </div>
+                <div class="span4">
+                    <i class="icon-envelope"></i> &nbsp; 
+                    hello@yourcomapny.com
+                </div>
+            </div> <!-- end .row -->        
+        </div> <!-- end .container -->      
+    </div>
+
+
+    </footer>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 <script src="/bundles/jalisbootstrap/js/bootstrap.js"></script> 
 

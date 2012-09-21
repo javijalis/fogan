@@ -2,8 +2,462 @@
     background: -moz-linear-gradient(45deg, #020031 0%, #6D3353 100%) repeat scroll 0 0 transparent;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2) inset, 0 -3px 7px rgba(0, 0, 0, 0.2) inset;
     color: #FFFFFF;
-    padding: 40px 0;
+    padding: 80px 0;
     position: relative;
     text-align: center;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075);
+}
+@import "bootstrap/bootstrap.min.css";
+*::-moz-selection {
+    background: none repeat scroll 0 0 #FC9362;
+    color: #FFFFFF;
+    text-shadow: none;
+}
+:focus {
+    outline-color: transparent !important;
+    outline-style: none !important;
+}
+html {
+    background: none repeat scroll 0 0 #1C1C1C;
+}
+body {
+    border-top: 5px solid #E0E8EA;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.btn.btn-primary {
+    background-image: none;
+    box-shadow: none;
+}
+.fr {
+    float: right;
+}
+.fl {
+    float: left;
+}
+.ac {
+    text-align: center;
+}
+.al {
+    text-align: left;
+}
+.ar {
+    text-align: right;
+}
+.clr {
+    clear: both;
+}
+.grey {
+    color: #999999;
+}
+.hidden {
+    display: none;
+}
+footer {
+    background: none repeat scroll 0 0 #292727;
+    color: #CCCCCC;
+    margin: 40px 0 0;
+    padding: 20px 0 0;
+}
+footer h3 {
+    color: white;
+    margin: 0 0 10px;
+}
+footer ul {
+    list-style-type: none;
+    margin: 0 0 10px;
+}
+footer ul li {
+    padding: 4px 0;
+}
+footer ul li a {
+    color: #999999;
+}
+footer ul li a:hover {
+    color: #FFFFFF;
+}
+footer input.btn[type="submit"] {
+    margin-top: -8px !important;
+}
+footer .social-networks a {
+    -moz-transition: all 0.3s ease 0s;
+    background: none repeat scroll 0 0 #222222;
+    border-radius: 50% 50% 50% 50%;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 22px;
+    height: 30px;
+    line-height: 24px;
+    margin: 10px 10px 0 0;
+    padding: 4px 0 0;
+    text-align: center;
+    text-decoration: none;
+    width: 32px;
+}
+footer .social-networks .icon-facebook {
+    border: 3px solid #3B5998;
+}
+footer .social-networks .icon-facebook:hover {
+    background: none repeat scroll 0 0 #3B5998;
+}
+footer .social-networks .icon-github {
+    border: 3px solid #A9CF54;
+}
+footer .social-networks .icon-github:hover {
+    background: none repeat scroll 0 0 #A9CF54;
+}
+footer .social-networks .icon-pinterest {
+    border: 3px solid #DE2C6C;
+}
+footer .social-networks .icon-pinterest:hover {
+    background: none repeat scroll 0 0 #DE2C6C;
+}
+footer .social-networks .icon-twitter {
+    border: 3px solid #31CDFD;
+}
+footer .social-networks .icon-twitter:hover {
+    background: none repeat scroll 0 0 #31CDFD;
+}
+footer .social-networks .icon-google-plus {
+    border: 3px solid #C9402E;
+}
+footer .social-networks .icon-google-plus:hover {
+    background: none repeat scroll 0 0 #C9402E;
+}
+footer .social-networks a:hover {
+    background: none repeat scroll 0 0 #000000;
+    color: #FFFFFF;
+}
+#footer-extra {
+    background: none repeat scroll 0 0 #1C1C1C;
+    color: #999999;
+    font-size: 0.9em;
+    padding: 10px 0;
+}
+#footer-extra i {
+    color: #AFDBEA;
+}
+.navbar {
+    margin: 0;
+}
+.navbar .container {
+    border-bottom: 0 solid #EEEEEE;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    width: 940px;
+}
+.navbar-inner {
+    background: none repeat scroll 0 0 #F6F6F6 !important;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2) inset;
+    filter: none;
+    padding: 0;
+}
+.navbar .brand {
+    color: #222222;
+    font-size: 28px;
+    font-weight: 400;
+    padding-top: 20px;
+}
+.navbar .brand span {
+    font-size: 40px;
+    line-height: 0;
+}
+.navbar .nav > li.active > a, .navbar .nav > li.active:hover > a {
+    background-color: transparent;
+    color: #222222;
+    font-weight: bold;
+}
+.navbar .nav > li.active > a {
+    background-image: url("../img/navbar-active-item.png");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+.navbar .nav > li {
+    margin: 0 0 0 10px;
+}
+.navbar .nav > li > a {
+    color: #444444 !important;
+    font-size: 1.1em;
+    padding: 26px 10px;
+    text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.25);
+}
+.navbar .nav > li > a:hover {
+    color: #222222;
+    text-decoration: underline;
+}
+.navbar .nav > li > button {
+    color: white;
+    margin-top: 22px;
+}
+.carousel {
+    position: relative;
+}
+.carousel-control {
+    -moz-transition: all 0.2s ease 0s;
+    background: none repeat scroll 0 0 #888888;
+    border: 0 none;
+    border-radius: 2px 2px 2px 2px;
+    line-height: 0.4em;
+    margin-top: -20px;
+    opacity: 1;
+    padding: 6px;
+    position: absolute;
+    top: 50%;
+}
+.carousel-control:hover {
+    background: none repeat scroll 0 0 #0081CC;
+}
+.carousel-control.left {
+    left: 0;
+}
+.carousel-control.right {
+    right: 0;
+}
+#macbook_carousel {
+    background: url("../img/mac.png") no-repeat scroll center top transparent;
+    height: 540px;
+    margin: 30px 0 0;
+    position: relative;
+}
+#macbook_carousel .carousel {
+    margin: 0 auto;
+    padding: 28px 0 0;
+    width: 600px;
+}
+#macbook_carousel .carousel .item {
+    height: 360px;
+    overflow: hidden;
+    width: 600px;
+}
+#macbook_carousel .carousel img {
+    width: 600px;
+}
+#macbook_carousel .carousel-control.left {
+    left: -120px;
+}
+#macbook_carousel .carousel-control.right {
+    right: -120px;
+}
+.hero-unit {
+    background: none repeat scroll 0 0 #FFFFFF;
+    padding: 40px 0 0;
+    position: relative;
+}
+.hero-unit h1 {
+    font-size: 2.2em;
+    font-weight: 600;
+}
+.faq ul {
+    list-style-type: none;
+    margin: 0;
+}
+.faq ul > li {
+    border-bottom: 1px solid #EEEEEE;
+    padding: 6px 0;
+}
+.faq ul > li > a {
+    font-size: 16px;
+    font-weight: bold;
+}
+.faq ul > li > p {
+    font-size: 1.05em;
+    line-height: 1.6em;
+}
+.faq input[type="text"] {
+    font-size: 1.2em;
+    padding: 14px;
+    width: 400px;
+}
+.search_button {
+    border-radius: 0 3px 3px 0;
+    margin: -8px 0 0 -10px;
+    padding: 14px 28px;
+}
+.pricing > div {
+    color: #666666;
+}
+.pricing ul {
+    list-style-type: none;
+    margin: 0 0 20px;
+}
+.pricing ul li {
+    border-bottom: 1px solid #EEEEEE;
+    color: #222222;
+    font-size: 1.2em;
+    padding: 4px 0;
+}
+.pricing .well {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.pricing h2 {
+    color: #0085CC;
+    font-size: 30px;
+    margin: 4px 0 20px;
+}
+.pricing .most-popular {
+    margin-top: -15px;
+}
+.most-popular {
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: Arial,sans-serif;
+    font-weight: 900;
+    overflow: hidden;
+    position: relative;
+}
+.most-popular p span {
+    -moz-transform: rotate(45deg);
+    background: none repeat scroll 0 0 #D93131;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 5px 30px rgba(255, 255, 255, 0.2) inset;
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 3px 10px;
+    position: absolute;
+    right: -25px;
+    text-align: center;
+    text-transform: uppercase;
+    top: 22px;
+    width: 100px;
+}
+.member:hover .member-networks a {
+    color: #DE2C6C;
+}
+.member .member-avatar {
+    margin: 0 0 20px;
+}
+.member .member-name {
+    color: #0082CC;
+    margin: 0;
+}
+.member .member-position {
+    color: #AAAAAA;
+    font-style: italic;
+    font-weight: normal;
+    margin: 0 0 10px;
+}
+.member .member-networks {
+    float: right;
+}
+.member .member-networks a {
+    color: #666666;
+    font-size: 20px;
+    line-height: 1.6em;
+    margin: 0 10px 0 0;
+}
+.member .member-bio {
+    border-top: 1px dotted #AAAAAA;
+    color: #777777;
+    font-size: 0.9em;
+    margin: 16px 0;
+    padding: 16px 0;
+}
+#portfolio-items .thumbnail {
+    margin: 0 0 20px;
+}
+#portfolio-filter li a {
+    background: none repeat scroll 0 50% transparent;
+    border: 0 none;
+    border-radius: 4px 4px 4px 4px;
+    margin: 0 10px 10px 0;
+    padding: 6px 12px;
+}
+#portfolio-filter li:hover a {
+    color: #333333;
+}
+#portfolio-filter li.active a {
+    background: none repeat scroll 0 0 #222222;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.project .thumbnail {
+    text-decoration: none;
+}
+.project .thumbnail:hover {
+    border-color: #999999;
+}
+.project .project-name {
+    color: #666666;
+    display: block;
+    font-weight: 400;
+    padding: 10px;
+}
+.isotope-item {
+    z-index: 2;
+}
+.isotope-hidden.isotope-item {
+    pointer-events: none;
+    z-index: 1;
+}
+.isotope, .isotope .isotope-item {
+    -moz-transition-duration: 0.5s;
+}
+.isotope {
+    -moz-transition-property: height, width;
+}
+.isotope .isotope-item {
+    -moz-transition-property: -moz-transform, opacity;
+}
+.isotope.no-transition, .isotope.no-transition .isotope-item, .isotope .isotope-item.no-transition {
+    -moz-transition-duration: 0s;
+}
+.zoom {
+    position: relative;
+}
+.zoom .zoom-overlay {
+    background: url("../img/icon-zoom.png") no-repeat scroll center center transparent;
+    cursor: pointer;
+    display: none;
+    height: 42px;
+    left: 50%;
+    margin-left: -24px;
+    margin-top: -16px;
+    position: absolute;
+    width: 42px;
+}
+.not-ie .zoom .zoom-overlay {
+    -moz-transition: opacity 0.2s ease-in-out 0s;
+    display: block;
+    opacity: 0;
+}
+.not-ie .zoom:hover .zoom-overlay {
+    opacity: 1;
+}
+.zoom:hover .zoom-overlay {
+    display: block;
+}
+#back-to-top {
+    background: none repeat scroll 0 0 #444444;
+    bottom: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: none;
+    font-size: 20px;
+    height: 20px;
+    line-height: 1em;
+    opacity: 0.8;
+    padding: 8px 0 12px;
+    position: fixed;
+    right: 10px;
+    text-align: center;
+    width: 40px;
+}
+#back-to-top:hover {
+    background-color: #FF3300;
+    opacity: 0.8;
+}
+#explore h3 {
+    margin: 0 0 10px;
+}
+ul.the-icons {
+    margin: 0;
+}
+ul.the-icons li {
+    border-radius: 4px 4px 4px 4px;
+    display: inline;
+    margin: 0;
+    padding: 10px 20px;
+}
+ul.the-icons li:hover {
+    background: none repeat scroll 0 0 #EEEEEE;
 }
