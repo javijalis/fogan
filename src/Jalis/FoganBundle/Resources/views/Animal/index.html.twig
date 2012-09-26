@@ -1,0 +1,49 @@
+<h1>Animal list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Breed</th>
+            <th>Birth</th>
+            <th>Color</th>
+            <th>Weight</th>
+            <th>Eyes</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('animal_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.breed }}</td>
+            <td>{% if entity.birth %}{{ entity.birth|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.color }}</td>
+            <td>{{ entity.weight }}</td>
+            <td>{{ entity.eyes }}</td>
+            <td>{{ entity.status }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('animal_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('animal_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('animal_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

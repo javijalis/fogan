@@ -1,0 +1,61 @@
+{% extends "JalisFoganBundle::layout.html.twig" %}
+{% block body %}
+<h1>Animal</h1>
+
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <th>Breed</th>
+            <td>{{ entity.breed }}</td>
+        </tr>
+        <tr>
+            <th>Birth</th>
+            <td>{{ entity.birth|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Color</th>
+            <td>{{ entity.color }}</td>
+        </tr>
+        <tr>
+            <th>Weight</th>
+            <td>{{ entity.weight }}</td>
+        </tr>
+        <tr>
+            <th>Eyes</th>
+            <td>{{ entity.eyes }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{{ entity.status }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('animal') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('animal_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('animal_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<a!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
@@ -6,7 +6,14 @@
 <link rel="stylesheet" href="/bundles/jalisbootstrap/css/bootstrap.css" />
 <link rel="stylesheet" href="/bundles/jalisfogan/css/main.css" />
 <link rel="stylesheet" href="/awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="/datepicker/css/datepicker.css" />
+<link rel="stylesheet" href="/colorpicker/css/colorpicker.css" />
 {% block stylesheets %}{% endblock %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script src="/bundles/jalisbootstrap/js/bootstrap.js"></script> 
+<script src="/datepicker/js/bootstrap-datepicker.js"></script>
+<script src="/colorpicker/js/bootstrap-colorpicker.js"></script>
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
@@ -27,13 +34,14 @@
         </a>
         <ul class="dropdown-menu">
           <li><a href="{{ path('fos_user_profile_edit') }}">Profile</a></li>
-          <li><a href="#">Settings</a></li>
+          <li><a href="{{path ('myanimals')}}">Settings</a></li>
           <li><a href="#" class="cookie-delete">Delete Cookies</a></li>
           <li class="divider"></li>
           <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
         </ul>
         {% else %}
-           <a class="btn" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+           <a class="btn" href="{{ path('fos_user_registration_register') }}"> <i class="icon-edit"></i>  registrarse</a>
+           <a class="btn" href="{{ path('fos_user_security_login') }}"><i class="icon-signin"></i> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
         {% endif %}
       </div>
       <div class="nav-collapse">
@@ -78,7 +86,8 @@
 <!--Body content-->
 
 {% block body %}
- {% block fos_user_content %}{% endblock %}
+    {% block fos_user_content %}
+    {% endblock %}
 {% endblock %}</div>
 </div>
 </div> 
@@ -141,8 +150,6 @@
 
 
     </footer>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-<script src="/bundles/jalisbootstrap/js/bootstrap.js"></script> 
 
 {% block javascripts %}{% endblock %}
 </body>

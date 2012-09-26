@@ -1,0 +1,72 @@
+{% extends "JalisFoganBundle::layout.html.twig" %}
+{% form_theme form _self %}
+{% block date_widget %}
+        {{ block('field_widget') }}
+         <script>
+        $('#{{ id }}').datepicker({
+                format: 'mm-dd-yyyy'
+            });
+        </script>
+  {% endblock %}{% block body %}
+
+
+
+<h1>Animal creation</h1>
+
+<form action="{{ path('animal_create') }}" method="post" {{ form_enctype(form) }}>
+{{ form_errors(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.breed) }}
+    {{ form_row(form.birth) }}
+    {{ form_label(form.color) }}  
+    {{ form_errors(form.color) }}
+<div id="colorpicker_body" class="input-append color" data-color="rgb(000, 000, 000)" data-color-format="rgb">  
+i
+    {{ form_widget(form.color,{ 'attr': { 'readonly': 'true', 'class' : 'span2' } }) }}
+
+ <span class="add-on"><i style="background-color: rgb(000, 000, 000)"></i></span>
+</div>
+
+<script>
+        $(function(){
+                 $('#colorpicker_body').colorpicker({
+                format: 'hex'
+            });
+            var bodyStyle = $('body')[0].style;
+                  });
+    </script>
+     {{ form_row(form.weight) }}
+
+    {{ form_rest(form) }}
+   {{ form_label(form.eyes) }}  
+    {{ form_errors(form.eyes) }}
+<div id="colorpicker_eyes" class="input-append color" data-color="rgb(000, 000, 000)" data-color-format="rgb">  
+
+    {{ form_widget(form.eyes,{ 'attr': { 'readonly': 'true', 'class' : 'span2' } }) }}
+
+ <span class="add-on"><i style="background-color: rgb(000, 000, 000)"></i></span>
+</div>
+
+<script>
+        $(function(){
+                 $('#colorpicker_eyes').colorpicker({
+                format: 'hex'
+            });
+            var bodyStyle = $('body')[0].style;
+                  });
+    </script>
+
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('animal') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

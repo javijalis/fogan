@@ -1,0 +1,27 @@
+{% extends "JalisFoganBundle::layout.html.twig" %}
+{% block body %}
+<h1>Animal list</h1>
+<ul class="thumbnails">
+    {% for entity in entities %}
+        <li class="thumbnail  span2">
+        <a href="{{ path('animal_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+            {{ entity.name }}
+            {{ entity.breed }}
+            {% if entity.birth %}{{ entity.birth|date('Y-m-d H:i:s') }}{% endif %}
+            {{ entity.color }}
+            {{ entity.weight }}
+            {{ entity.eyes }}
+            {{ entity.status }}
+                        <a href="{{ path('animal_show', { 'id': entity.id }) }}">ver</a>
+                       <a href="{{ path('animal_edit', { 'id': entity.id }) }}">editar</a>
+        </li>
+    {% endfor %}
+</ul>
+<ul>
+    <li>
+        <a href="{{ path('animal_new_pet') }}">
+                Nuevo 
+       </a>
+    </li>
+</ul>
+{% endblock %}
